@@ -1,0 +1,28 @@
+# Versões fixadas para que o projeto seja reproduzível por terceiros. Pin evita o
+# clássico "funcionava ontem" — e um avaliador que não consegue instalar não avalia.
+#
+# ANTES DE INSTALAR: confirme no PyPI as versões estáveis do dia e substitua os pins
+# abaixo. Eles vêm de um projeto de agosto/2026 e servem de piso, não de verdade.
+# Incompatibilidade se resolve ajustando o pin, nunca removendo-o.
+
+# Aplicação
+streamlit==1.61.1
+
+# Orquestração do RAG (uso deliberadamente enxuto: sem agent, tools ou memory)
+langchain==1.3.15
+langchain-community==0.4.2        # vectorstore FAISS
+langchain-google-genai==4.3.4     # embeddings + chat do Gemini
+
+# Índice vetorial local
+# Tem wheel manylinux para x86_64 e para aarch64, então roda nos dois shapes Always
+# Free da OCI. Sem wheel haveria compilação — inviável em 1 GB de RAM.
+faiss-cpu==1.15.0
+
+# Leitura dos PDFs. pypdf resolve texto corrido e tem wheel pura; pdfplumber só entra
+# se algum dos documentos tiver tabela que precise virar texto estruturado (ele traz
+# pdfminer.six junto e pesa mais na VM).
+pypdf==6.4.0
+
+# Leitura da base e configuração
+pandas==3.0.5
+python-dotenv==1.2.3

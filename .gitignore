@@ -1,0 +1,49 @@
+# --- Segredos: NUNCA versionar ---
+# A chave da API do Gemini vive só no .env local. O que o repositório publica é o
+# .env.example, com o nome da variável e nenhum valor.
+.env
+.env.*
+*.env
+!.env.example
+
+# --- Artefatos derivados ---
+# O índice vetorial se regera em segundos com scripts/indexar.py. Versionar binário
+# derivado só cria conflito e engorda o clone.
+indice/
+*.faiss
+*.index
+*.pkl
+
+# Texto bruto extraído dos PDFs: etapa intermediária do pipeline, regerável por
+# extrair.py. O que se versiona é o código da extração e a base final.
+dados/_trabalho/texto/
+
+# Respostas do golden set, gravadas para não regastar cota a cada reexecução. São
+# derivadas (o relatório, esse sim, é versionado como evidência) e engordariam o clone
+# com megabytes de texto que ninguém lê.
+avaliacao/cache/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# --- Ferramentas de agente e planejamento interno ---
+# Redundante por segurança: estes diretórios vivem fora do repositório, mas se algum
+# dia surgirem aqui dentro, não devem subir.
+.claude/
+memory/
+# Descomente se você mover .agents/ e AGENTS.md para dentro do repositório porque o
+# Antigravity não os encontrou na raiz do workspace (ver LEIA-ME_PRIMEIRO §3):
+# .agents/
+# AGENTS.md
+
+# --- Sistema operacional / editor ---
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/

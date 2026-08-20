@@ -1,0 +1,13 @@
+# Configuracao do servidor Streamlit.
+#
+# headless: sem isto o Streamlit tenta abrir um navegador ao subir -- na VM da OCI,
+# onde ele sobe por systemd e nao ha navegador nenhum, isso e ruido no boot.
+# address 0.0.0.0: escuta em todas as interfaces. Com o default (localhost) a
+# aplicacao responde na VM e nao responde pelo IP publico, que e a evidencia de deploy.
+[server]
+headless = true
+port = 8501
+address = "0.0.0.0"
+
+[browser]
+gatherUsageStats = false

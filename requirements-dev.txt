@@ -1,0 +1,8 @@
+# Dependencias de DESENVOLVIMENTO. A VM da OCI instala so o requirements.txt: pytest
+# na maquina de producao e peso morto (e, em 1 GB de RAM, peso morto tem custo), e a
+# separacao deixa isso obvio para quem faz o deploy.
+#
+#   pip install -r requirements-dev.txt
+-r requirements.txt
+
+pytest==9.1.1

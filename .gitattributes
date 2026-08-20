@@ -1,0 +1,10 @@
+# Fim de linha normalizado em LF no repositório. O desenvolvimento é no Windows e o
+# deploy é numa VM Linux: sem isto, o Git entrega o CSV com CRLF no clone e sobra um
+# \r no último campo de cada linha — o tipo de defeito que não gera erro, só piora o
+# dado em silêncio. Vale para o pipeline também, que grava com lineterminator="\n".
+* text=auto eol=lf
+
+*.csv text eol=lf
+*.tsv text eol=lf
+*.py  text eol=lf
+*.md  text eol=lf
